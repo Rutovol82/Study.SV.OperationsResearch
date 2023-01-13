@@ -1,3 +1,5 @@
+import csv
+
 import matplotlib.pyplot as plt
 import pysailing as psl
 import numpy as np
@@ -10,8 +12,8 @@ if __name__ == '__main__':
     params: psl.VelocityParameters
 
     with open("sailboats/Norlin_36_A_(SD).csv") as file:
-        loader = psl.VelocityLoader(file, delimiter=';')
-        params = loader.load()
+        measurements = psl.VelocityMeasurements.from_csv(csv.reader(file, delimiter=';'))
+        params = psl.VelocityParameters(measurements)
 
     ax = plt.subplot(projection='polar')
 
