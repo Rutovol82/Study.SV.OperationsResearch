@@ -1,3 +1,6 @@
-from ._VelocityGetter import *
-from ._VelocityMeasurements import *
-from ._VelocityParameters import *
+from ._VelocityGetter import VelocityGetter
+
+from ._VelocityMeasurements import VelocityMeasurements
+from ._VelocityParameters import VelocityParameters
+
+from ._AnglesComputer_ import AnglesComputer
