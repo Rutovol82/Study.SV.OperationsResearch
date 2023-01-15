@@ -16,8 +16,9 @@ class AnglesComputer:
             fd = abs(w - d)
             fr = (fd + d + r) if w > d else (- fd + d + r)
         else:
-            fd = 360 - w + d
-            fr = (fd - d - r) if w <= 270 else (- fd + d + r)
+            raise ValueError()
+            #fd = 360 - w + d
+            #fr = (fd - d - r) if w <= 270 else (- fd + d + r)
         return fd, fr
 
     @staticmethod
@@ -40,9 +41,10 @@ class AnglesComputer:
     def get_score(self, wangle, wspeed, dangle=None, rangle=None):
         return self._get_time(1, wangle, wspeed, dangle, rangle)
 
-    def scores(self, wangle, wspeed, *, min_angle=0.1):
+    def scores(self, wangle, wspeed, *, min_angle=0.01):
 
-        d_, r_, scr_grid = np.linspace(0, 90), np.linspace(0, 90), []
+        wangle = wangle if wangle <= 180 else 360 - wangle
+        d_, r_, scr_grid = np.linspace(min_angle, 90 - min_angle), np.linspace(min_angle, 90 - min_angle), []
 
         direct = self.get_score(wangle, wspeed)
         best = (0, 0, direct)
@@ -53,18 +55,15 @@ class AnglesComputer:
 
             for r in r_:
 
-                a = d + r
+                a = 180 - d - r
 
-                if 180 - a < min_angle:
+                if a < min_angle:
                     scr_row.append(float('inf'))
-
-                elif a < min_angle:
-                    scr_row.append(direct)
 
                 else:
                     scr_row.append(self.get_score(wangle, wspeed, d, r))
                     if scr_row[-1] < best[2]:
-                        best = (d, r, scr_row[-1])
+                        best = (d, a, scr_row[-1])
 
             scr_grid.append(scr_row)
 
