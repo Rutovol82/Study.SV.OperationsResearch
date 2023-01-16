@@ -69,9 +69,12 @@ class VelocityMeasurements(VelocityGetter):
     def nodes(self, *, symmetric=True, add_zero=True, mode: str = 'deg') -> (np.ndarray, np.ndarray):
 
         points_set, points, values = set(), list(), list()
-        angles_iter = self._angles if mode == 'deg' else np.radians(self._angles) if mode == 'rad' else None
 
-        if angles_iter is None:
+        if mode == 'deg':
+            angles, max_angle = self._angles, 360
+        elif mode == 'rad':
+            angles, max_angle = np.radians(self._angles), np.pi * 2
+        else:
             raise ValueError(f"Unsupported mode '{mode}'.")
 
         def _append(point, value):
@@ -83,9 +86,9 @@ class VelocityMeasurements(VelocityGetter):
         def _add(ang, wnd, val):
             _append((ang, wnd), val)
             if symmetric:
-                _append((360 - ang, wnd), val)
+                _append((max_angle - ang, wnd), val)
 
-        for angle, row in zip(self._angles, range(len(self._angles))):
+        for angle, row in zip(angles, range(len(self._angles))):
 
             if add_zero:
                 _add(angle, 0.0, 0.0)
