@@ -38,7 +38,9 @@ class AnglesComputer:
     def get_score(self, wangle, wspeed, dangle=None, rangle=None):
         return self._get_time(1, wangle, wspeed, dangle, rangle)
 
-    def scores(self, wangle, wspeed, *, min_angle=30):
+    def scores(self, wangle, wspeed, *, min_angle=30, entrance='right'):
+
+        wangle = wangle if entrance == 'right' else 360 - wangle if entrance == 'left' else None
 
         if wangle is None or wspeed is None or min_angle is None:
             raise ValueError("Unexpected arguments were passed")
