@@ -1,9 +1,3 @@
+from ._AngleQuantiteis import AngleQuantities
 from ._Angle import Angle
-
-
-def rad(value):
-    return Angle(rad=value)
-
-
-def deg(value):
-    return Angle(deg=value)
+from ._funcs import rad, deg
