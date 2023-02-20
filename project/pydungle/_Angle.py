@@ -23,8 +23,8 @@ class Angle:
         if deg is None and rad is None:
             raise ValueError("No angle value passed.")
 
-        self._rad = rad if rad is not None else rad2deg(deg)
-        self._deg = deg if deg is not None else deg2rad(rad)
+        self._rad = rad if rad is not None else deg2rad(deg)
+        self._deg = deg if deg is not None else rad2deg(rad)
 
     @property
     def deg(self):
@@ -40,7 +40,9 @@ class Angle:
 
     @property
     def _operable(self):
-        return self.rad if self.OPERATE_BY == 'rad' else self.deg if self.OPERATE_BY == 'deg' else None
+        return self.rad if self.OPERATE_BY == AngleQuantities.RAD \
+          else self.deg if self.OPERATE_BY == AngleQuantities.DEG \
+          else None
 
     def __str__(self):
         return f"({self.deg}° ≈ {self.rad})"
@@ -54,44 +56,37 @@ class Angle:
     def __hash__(self):
         return hash(self._comparable)
 
-    @staticmethod
-    def _math_operator(method):
-        def op(self: Angle, other: Union[Angle, float, int], *args, **kwargs):
-            if isinstance(other, self.__class__):
-                return method(self, other._operable, *args, **kwargs)
-            if other is float or other is int:
-                return method(self, other, *args, **kwargs)
-            raise TypeError("Unsupported operand type.")
+    @classmethod
+    def _unpack(cls, value):
 
-        return op
+        if isinstance(value, cls):
+            return value._operable
+
+        if type(value) in [float, int]:
+            return value
+
+        raise TypeError(f"Unsupported operand type {type(value)}")
 
     def __float__(self):
         return float(self._operable)
 
-    @_math_operator
     def __add__(self, other):
-        return Angle(self._operable + other)
+        return Angle(self._operable + self._unpack(other))
 
-    @_math_operator
     def __sub__(self, other):
-        return Angle(self._operable - other)
+        return Angle(self._operable - self._unpack(other))
 
-    @_math_operator
     def __mul__(self, other):
-        return Angle(self._operable * other)
+        return Angle(self._operable * self._unpack(other))
 
-    @_math_operator
     def __truediv__(self, other):
-        return Angle(self._operable / other)
+        return Angle(self._operable / self._unpack(other))
 
-    @_math_operator
     def __floordiv__(self, other):
-        return Angle(self._operable // other)
+        return Angle(self._operable // self._unpack(other))
 
-    @_math_operator
     def __mod__(self, other):
-        return Angle(self._operable % other)
+        return Angle(self._operable % self._unpack(other))
 
-    @_math_operator
     def __divmod__(self, other):
-        return Angle(divmod(self._operable, other))
+        return Angle(divmod(self._operable, self._unpack(other)))

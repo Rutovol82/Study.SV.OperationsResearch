@@ -1,7 +1,7 @@
-from typing import Dict, Iterable
+from typing import Dict, Iterable, Tuple
 
-from . import VelocityPredictor
-from ... import CourseContext, VelocityInfo
+from .. import VelocityPredictor
+from .... import CourseContext, VelocityInfo
 
 
 class VelocityMeasurements(VelocityPredictor):
@@ -17,6 +17,6 @@ class VelocityMeasurements(VelocityPredictor):
     def __getitem__(self, item):
         return self.get_velocity(item)
 
-    def velocities(self) -> Iterable[CourseContext, VelocityInfo]:
+    def velocities(self) -> Iterable[Tuple[CourseContext, VelocityInfo]]:
         for context, velocity in self._velocities.items():
             yield context, VelocityInfo(velocity)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pysailing2:datafile xmlns:pysailing2="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/XMLSchema.xsd"
+                     xmlns:pom="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/XMLSchema.xsd"
+                     xmlns:run="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/run/XMLSchema.xsd"
+                     xmlns:run-defaults="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/run/defaults/XMLSchema.xsd">
+
+    <pom:SailboatParameters>
+
+        <pom:VehicleInfo>
+            <pom:name>Avance 24</pom:name>
+        </pom:VehicleInfo>
+
+        <pom:RunningParameters>
+            <run-defaults:velocity/>
+        </pom:RunningParameters>
+
+    </pom:SailboatParameters>
+
+</pysailing2:datafile>

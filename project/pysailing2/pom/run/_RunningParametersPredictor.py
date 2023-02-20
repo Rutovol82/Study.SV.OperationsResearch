@@ -1,6 +1,6 @@
 from abc import ABCMeta
 
-from . import TurnsPredictor, VelocityPredictor
+from pysailing2.pom.run.schema import TurnsPredictor, VelocityPredictor
 
 
 class RunningParametersPredictor(TurnsPredictor, VelocityPredictor, metaclass=ABCMeta):

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/run/XMLSchema.xsd"
+            elementFormDefault="qualified">
+
+    <xsd:complexType name="RunningParametersPredictor"/>
+    <xsd:complexType name="VelocityPredictor"/>
+    <xsd:complexType name="TurnsPredictor"/>
+
+</xsd:schema>

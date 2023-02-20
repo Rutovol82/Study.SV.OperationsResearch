@@ -1,14 +1,14 @@
-from . import RunningParametersPredictor, VelocityPredictor, TurnsPredictor
-from ... import CourseContext, VelocityInfo, TurnParameters, TurnInfo
+from .. import RunningParametersPredictor, VelocityPredictor, TurnsPredictor
+from .... import CourseContext, VelocityInfo, TurnParameters, TurnInfo
 
 
 class RunningParameters(RunningParametersPredictor):
 
-    _turning: TurnsPredictor
+    _turns: TurnsPredictor
     _velocity: VelocityPredictor
 
     def __init__(self, *, turning: TurnsPredictor, velocity: VelocityPredictor):
-        self._turning = turning
+        self._turns = turning
         self._velocity = velocity
 
     def get_turn(self, parameters: TurnParameters) -> TurnInfo:
@@ -18,8 +18,8 @@ class RunningParameters(RunningParametersPredictor):
         pass
 
     @property
-    def turning(self):
-        return self._turning
+    def turns(self):
+        return self._turns
 
     @property
     def velocity(self):

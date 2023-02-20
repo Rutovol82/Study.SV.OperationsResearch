@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/run/defaults/XMLSchema.xsd"
+            xmlns:run-defaults="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/run/defaults/XMLSchema.xsd"
+            xmlns:run="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/run/XMLSchema.xsd"
+            elementFormDefault="qualified">
+
+    <xsd:complexType name="RunningParameters">
+        <xsd:complexContent>
+            <xsd:extension base="run:RunningParametersPredictor">
+                <xsd:all>
+                    <xsd:element name="velocity" type="run-defaults:VelocityParameters"/>
+                </xsd:all>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="VelocityParameters">
+        <xsd:complexContent>
+            <xsd:extension base="run:VelocityPredictor">
+                <xsd:all>
+                    <xsd:element name="measurements" type="run-defaults:VelocityMeasurements"/>
+                </xsd:all>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="VelocityMeasurements">
+        <xsd:complexContent>
+            <xsd:extension base="run:VelocityPredictor">
+                <xsd:sequence>
+                    <xsd:element name="value" maxOccurs="unbounded" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:simpleContent>
+                                    <xsd:extension base="xsd:string">
+                                    <xsd:attribute type="xsd:string" name="angle" use="required"/>
+                                    <xsd:attribute type="xsd:string" name="wind" use="required"/>
+                                    <xsd:attribute type="xsd:string" name="speed" use="required"/>
+                                </xsd:extension>
+                            </xsd:simpleContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+</xsd:schema>

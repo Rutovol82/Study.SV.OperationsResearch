@@ -1,0 +1,50 @@
+<pysailing2:envelope xmlns:pysailing2="empty">
+
+
+    <pysailing2:sailboat-parameters xmlns:pom="empty">
+
+        <pom:vehicle-info>
+            <name>Maxi One 80</name>
+        </pom:vehicle-info>>
+
+        <pom:running-parameters xmlns:run="empty">
+
+            <run:velocity>
+
+                <run-defaults:velocity-measurements xmlns:run-defaults="empty"
+                                                    angles="deg">
+
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+                    <value angle="" wind="" speed=""/>
+
+                </run-defaults:velocity-measurements>
+
+            </run:velocity>
+
+            <run:turns-predictor xmlns:run-defaults="empty">
+
+                <run-defaults:simplest-turns-predictor>
+                    <enter-time>12</enter-time>
+                    <per-angle-time>1</per-angle-time>
+                    <exit-time>12</exit-time>
+                </run-defaults:simplest-turns-predictor>
+
+            </run:turns-predictor>
+
+        </pom:running-parameters>
+
+    </pysailing2:sailboat-parameters>
+
+
+</pysailing2:envelope>

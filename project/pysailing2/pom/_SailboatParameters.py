@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
-from . import BoatInfo, RunningParametersPredictor
+from . import VehicleInfo, RunningParametersPredictor
 
 
 @dataclass
 class SailboatParameters:
 
-    info: BoatInfo
+    info: VehicleInfo
     running_parameters: RunningParametersPredictor

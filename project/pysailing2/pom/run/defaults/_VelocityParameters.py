@@ -1,5 +1,5 @@
-from . import VelocityPredictor
-from ... import CourseContext, VelocityInfo
+from .. import VelocityPredictor
+from .... import CourseContext, VelocityInfo
 
 
 class VelocityParameters(VelocityPredictor):

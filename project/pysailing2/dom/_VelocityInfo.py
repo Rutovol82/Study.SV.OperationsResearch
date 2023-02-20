@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import paxb as pb
 
 
 @dataclass(frozen=True)

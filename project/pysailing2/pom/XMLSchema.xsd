@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/XMLSchema.xsd"
+            xmlns:pom="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/XMLSchema.xsd"
+            elementFormDefault="qualified">
+
+    <xsd:element name="SailboatParameters">
+        <xsd:complexType xmlns:run="https://github.com/Rutovol82/Study.SV.OperationsResearch/blob/master/pysailing2/pom/run/XMLSchema.xsd">
+            <xsd:all>
+                <xsd:element name="VehicleInfo" type="pom:VehicleInfo"/>
+                <xsd:element name="RunningParameters" type="run:RunningParametersPredictor"/>
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="VehicleInfo">
+        <xsd:all>
+            <xsd:element name="name" type="xsd:string"/>
+        </xsd:all>
+    </xsd:complexType>
+
+</xsd:schema>

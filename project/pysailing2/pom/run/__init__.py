@@ -1,4 +1,5 @@
 from ._TurnsPredictor import TurnsPredictor
 from ._VelocityPredictor import VelocityPredictor
-
 from ._RunningParametersPredictor import RunningParametersPredictor
+
+from .defaults import *
