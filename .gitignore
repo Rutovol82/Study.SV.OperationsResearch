@@ -1,0 +1,9 @@
+# Ignore JetBrains IDE's configurations
+*/.idea/*
+
+# Ignore standart projects run-folders content
+*/.work/*
+*/.out/*
+
+# Ignore Python cache files
+*.pyc
