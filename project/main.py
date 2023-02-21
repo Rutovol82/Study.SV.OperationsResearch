@@ -7,11 +7,9 @@ import numpy as np
 from plotting import *
 
 
-#BOAT = 'Norlin 36 A (SD)'
-#BOAT = "VOLVO OPEN 70"
-#BOAT = "Maxi One 80"
-#BOAT = "Maxi 72"
-#BOAT = "WILKE 49"
+GET_PARAMS_NAME = lambda boat: f'{boat}.csv'
+PARAMS_FOLDER = ".work/sailboats"
+
 BOAT = "Avance 24"
 
 MIN_ANGLE = 0.1
@@ -63,7 +61,7 @@ def main():
 
     params: psl.VelocityParameters
 
-    with open(f"sailboats/{BOAT}.csv") as file:
+    with open(f"{PARAMS_FOLDER}/{GET_PARAMS_NAME(BOAT)}") as file:
         measurements = psl.VelocityMeasurements.from_csv(csv.reader(file, delimiter=';'))
         params = psl.VelocityParameters(measurements)
         computer = psl.AnglesComputer(params)
